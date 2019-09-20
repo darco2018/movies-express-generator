@@ -1,16 +1,18 @@
+/* eslint-disable no-console */
+/* eslint-disable max-len */
 // The application entry point is the JavaScript file /bin/www , which requires real entry point, app.js
-//This sets up some of the application error handling and then loads app.js to do the rest of the work.
-var createError = require('http-errors'); // for express error handling
-var express = require('express');
-var path = require('path'); // Node lib to parse dir and path files
-var cookieParser = require('cookie-parser'); // parse the cookie header & populate req.cookies
-var logger = require('morgan'); // request logget middleware
+// This sets up some of the application error handling and then loads app.js to do the rest of the work.
+const createError = require('http-errors'); // for express error handling
+const express = require('express');
+const path = require('path'); // Node lib to parse dir and path files
+const cookieParser = require('cookie-parser'); // parse the cookie header & populate req.cookies
+const logger = require('morgan'); // request logget middleware
 
 //  import modules from /routes dir - they contain related routes(URL paths)
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const moviesRouter = require('./routes/movies');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,10 +20,10 @@ app.set('view engine', 'ejs');
 
 // add middleware libs into the request handling chain
 // express middleware signature: function(req,res,next) where next is next function
-app.use((req, res, next)=>{ 
+app.use((req, res, next) => {
   // when (err, req, res, next) will be understood as error handling middleware = will caych any errors
-  console.log("\n\nALWAYS executed middleware, even on server restart...");
-  // next() or next(err) if error is declare as argument in signature-> goes to next middleware 
+  console.log('\n\nALWAYS executed middleware, even on server restart...');
+  // next() or next(err) if error is declare as argument in signature-> goes to next middleware
   next(); //  !!!!!!!!!!!! it skipped here, it will hang the app
 });
 app.use(logger('dev'));
@@ -31,17 +33,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // added to the request handling chain
 app.use('/', indexRouter);
-app.use('/users', usersRouter); 
+app.use('/movies', moviesRouter);
 
-//-------------------------------------- ADDING HANDLER METHODS & HTTP RESPONSEs
+// -------------------------------------- ADDING HANDLER METHODS & HTTP RESPONSEs
 
 // catch 404 and forward to error handler (any function below with err as parameter)
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

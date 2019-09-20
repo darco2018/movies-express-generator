@@ -1,20 +1,34 @@
 {
   "name": "movies",
   "version": "0.0.0",
+  "description": "app fetching a movies API data - express+node POC",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"
-  }
+  },
+  "keywords": [
+    "movies",
+    "express",
+    "node",
+    "javascript"
+  ],
+  "author": "Dariusz Ustrzycki <ustrzycki@javacoder.cloud>",
+  "license": "ISC"
 }

@@ -13,3 +13,7 @@ npm install -D nodemon (automate restarting the server on change. ou will still 
 package.json: "devstart": "nodemon ./bin/www" (we only want to use nodemon during development,)
 
 DEBUG=movies:* npm run devstart ( rs - to force restart by yourself)
+
+npm i eslint  eslint-config-airbnb-base eslint-plugin-import  eslint init (to generate .eslintrc)
+npm i body-parser
+npm i request

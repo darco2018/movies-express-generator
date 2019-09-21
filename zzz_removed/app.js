@@ -1,14 +1,16 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
-const createError = require('http-errors');
+// The application entry point is the JavaScript file /bin/www , which requires real entry point, app.js
+// This sets up some of the application error handling and then loads app.js to do the rest of the work.
+const createError = require('http-errors'); // for express error handling
 const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+const path = require('path'); // Node lib to parse dir and path files
+const cookieParser = require('cookie-parser'); // parse the cookie header & populate req.cookies
+const logger = require('morgan'); // request logget middleware
 
-//  import modules from /routes dir
-const indexRouter = require('./routes/index');
-const moviesRouter = require('./routes/movies');
+//  import modules from /routes dir - they contain related routes(URL paths)
+const indexRouter = require('../routes/index');
+const moviesRouter = require('../routes/movies');
 
 const app = express();
 

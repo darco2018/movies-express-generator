@@ -1,5 +1,9 @@
 <h1>Movies</h1>
-<% movies.forEach((movie)=>{ %>
-<li><%= movie.title %>
-    <%= movie.year %></li>
+<% movies["Search"].forEach((movie)=>{ %>
+<p><%= movie.Title %> |
+    <%= movie.Year %> |
+    imdbID: <%= movie.imdbID %> |
+    <%= movie.Type %> </p> <br>
+<img src="<%= movie.Poster %>" type="">
+
 <% }) %>

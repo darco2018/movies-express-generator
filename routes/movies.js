@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
+require('dotenv').config(); // loads environment variables from a .env file into process.env
 const express = require('express');
 const request = require('request');
 
 const router = express.Router();
-const OMDbAPIkey = '111ffc84';
-const urlBase = `http://www.omdbapi.com/?apikey=${OMDbAPIkey}&`; // + 's=polish';
+const urlBase = `http://www.omdbapi.com/?apikey=${process.env.OMDB_APIKEY}&`; // + 's=polish';
 
 function Movie(title, year) {
   this.title = title;
@@ -48,6 +48,5 @@ router.post('/', (req, res) => {
 router.get('/new', (req, res) => {
   res.render('search');
 });
-
 
 module.exports = router;

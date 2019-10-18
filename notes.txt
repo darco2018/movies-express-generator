@@ -1,0 +1,27 @@
+CREATING EXPRESS APP with generator, as was shown https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website
+
+Template based on my projects: snippets & movies
+For a LESS advanced template see: express-generator-boilerplate-extended
+
+npm init     (generates package.json [ set entry point to app.js!] )
+    first check if express-generator is already globally installed: npm list -g --depth=0, if not then:
+npm install express-generator -–g      
+express --view=ejs –git                (creates dir structure, chooses view template, another popular is jade=pug)
+npm install -D nodemon (nodemon automates restarting the server on change. You will still need to reload the browser to
+                       refresh the page.)
+npm i                  (i=install  >> installs dependencies  added in package.json by exress-generator)
+    add in package.json: 
+        "start": "node ./bin/www",
+        "devstart": "nodemon ./bin/www"
+DEBUG=express-generator-boilerplate:* npm start      (should start the server at localhost:3000)            
+DEBUG=express-generator-boilerplate:* npm run devstart (should start the server in debug mode for development)  ( rs - force server restart)
+
+git init
+-----------------------------------------------
+Stage 2
+    Add other packages you want, eg
+npm i eslint  eslint-config-airbnb-base eslint-plugin-import 
+    and then:
+    eslint init (to generate .eslintrc)
+npm i body-parser     (will be necessary for parsing req.body)
+npm i request         (a wrapper for Fetch interface to handle API requests)
